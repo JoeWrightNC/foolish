@@ -105,11 +105,10 @@
                 );
                 $recommendationsQuery = new WP_Query($args);
             ?> 
-            <?php if ($recommendationsQuery->have_posts()): ?>
             <div class="archiveContainer">   
                 <div class="row">
                     <h3 class="sectionLabel">Past Recommendations:</h3>
-                    <?php while($recommendationsQuery->have_posts()): $recommendationsQuery->the_post(); ?>
+                    <?php if ($recommendationsQuery->have_posts()): while($recommendationsQuery->have_posts()): $recommendationsQuery->the_post(); ?>
                         <?php if (tr_post_field('company_ticker') === $company): ?>
                             <article class="archiveCard">        
                                 <div class="card-image">
@@ -154,11 +153,10 @@
                 );
                 $newsQuery = new WP_Query($args);
             ?> 
-            <?php if ($newsQuery->have_posts()): ?>
             <div class="archiveContainer">   
                 <div class="row">
                     <h3 class="sectionLabel">In The News:</h3>
-                    <?php while($newsQuery->have_posts()): $newsQuery->the_post(); ?>
+                    <?php if ($newsQuery->have_posts()): while($newsQuery->have_posts()): $newsQuery->the_post(); ?>
                         <?php if (tr_post_field('ticker_symbol') === $company): ?>
                             <article class="archiveCard">        
                                 <div class="card-image">
