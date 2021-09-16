@@ -78,7 +78,11 @@
                                     </tr>
                                     <tr>
                                         <td>Last Dividend</td>
-                                        <td><?php echo $dataCP[0]->lastDiv ?></td>
+                                        <?php if ($dataCP[0]->lastDiv != null): ?>
+                                            <td><?php echo $dataCP[0]->lastDiv ?></td>
+                                        <?php else: ?>
+                                            <td><?php echo 'N/A' ?></td>
+                                        <?php endif ?>
                                     </tr>
                                     </tbody>
                                 </table>
