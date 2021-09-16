@@ -1,9 +1,9 @@
-## Welcome to our Hiring Practical!
+## Welcome!
 
 # Getting Started
 
 1. Ensure you have Docker Installed [Get Docker](https://docs.docker.com/get-docker/)
-2. Clone the Practical to Local `git clone git@github.com:`
+2. Clone the Practical to Local via HTTPS `git clone https://github.com/JoeWrightNC/foolish.git`
 3. Stand-Up Wordpress `docker-compose up`
 4. Get the Name of your Container `docker ps`.  If this is your first time using docker, it will look something like hiring-practical_wordpress_1.
 5. Copy Parent Theme to Docker `docker cp  YOUR-PATH/wp-content/themes/genesis YOUR-CONTAINER-NAME:/bitnami/wordpress/wp-content/themes/.`
@@ -14,5 +14,5 @@
     - Username: motleyfool
     - Password: StayFoolish!
 10. Enable the Typerocket and the Motley Fool plugin in the Admin:  [http://localhost/wp-admin](http://localhost/wp-admin)
-11. Navigate to [https://localhost/](https://localhost/).
+11. Navigate to [http://localhost/](http://localhost/).
 12. There's a brief intro on the homepage that will introduce everything from there!
