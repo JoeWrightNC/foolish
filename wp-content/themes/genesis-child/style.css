@@ -1,0 +1,285 @@
+/* # Genesis Framework
+Theme Name: Genesis Child 
+Theme URI: https://joewright.codes
+Description: A Custom Theme by Joe Wright
+Author: Joe Wright
+Author URI: https://joewright.codes
+Template: genesis
+Version: 3.3.5
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-menu, featured-images, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+*/
+
+/* Global CSS Variables & Styles */
+:root {
+	--black: #000000;
+	--white: #ffffff;
+	--very_light_gray: #F2F2F2;
+	--briefs_gray: #DADBDC;
+	--light_medium_gray: #c8c8c8;
+	--medium_gray: #8B8F96;
+	--cta_gray: #666666;
+	--dark_gray: #505257;
+	--dark_blue_gray: #323A44;
+	--very_dark_gray: #222222;
+	--brand_one: #d21111;
+	--brand_two: #55b2c7;
+	--brand_three: #c3f2dc;
+	--breaking_red: #FF0000;
+	--link_blue: #007BC7;
+}
+.home.blog .site-inner {
+	display: none;
+}
+.row {
+	flex-direction: row !important; /*using important to overpower css import of motley assets*/
+}
+*, *::before, *::after {
+    box-sizing: border-box !important; /*using important to overpower css import of motley assets*/
+}
+
+/* global archive styles */
+.archiveContainer {
+	display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 2.5rem 4.5rem 2rem;
+    padding-bottom: 0;
+	margin-bottom: 42px;
+}
+.archiveCard {
+	font-family: 'Newsreader', serif;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 30px 0;
+}
+.card-image {
+    flex-basis: 22%;
+    margin-right: 15px;
+}
+@media screen and (max-width: 576px) {
+	.card-image {
+		display: none;
+	}
+}
+.archiveCard .text {
+    flex: 1 1 50%;
+    color: #53565A;
+}
+.archiveCard h4 {
+    transition: .3s ease;
+    color: #485CC7;
+    margin: 0;
+	font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+.archiveCard .story-date-author, .archiveCard .author-byline {
+    font-size: 13px;
+    color: #6f7173;
+    margin-bottom: 5px;
+    margin: 5px 0 10px;
+    line-height: 1;
+}
+/* global single styles */
+.singlePostContainer {
+	display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 2.5rem 4.5rem 2rem;
+	margin-bottom: 42px;
+}
+@media screen and (max-width: 768px) {
+	.singlePostContainer {
+		padding: 2.5rem 0 2rem;
+	}
+}
+@media screen and (min-width: 768px) {
+	.companyFloat {
+		float:right;
+	}
+}
+.author-tagline-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+.author-avatar {
+    flex: 0 0 70px;
+    margin-right: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+}
+.author-name {
+    padding-bottom: 0.5em;
+    font-weight: 500;
+    margin: 0 5px 0 0;
+    padding: 0;
+    text-transform: capitalize;
+}
+.author-name, .author-bio, .publication-date, .publication-subject {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.publication-date {
+    font-style: italic;
+    font-weight: 100;
+    font-size: 13px;
+}
+.companyName {
+	font-size: 3em;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1.15em;
+    color: var(--black);
+}
+.sectionLabel {
+	font-size: 1.5em;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1.15em;
+    color: var(--black);
+}
+/* recommendation single */
+.companyContainer { 
+    border: 2px solid var(--very_light_gray);
+    border-radius: 8px;
+    margin: auto;
+	width: 100%;
+	margin-bottom: 42px;
+}
+.companyContainer ul {
+	margin: 12px 0;
+	border-radius: 8px;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+}
+.companyContainer p, .companyContainer a {
+	margin: 6px 12px;
+	border-radius: 8px;
+}
+.companyContainer ul li { 
+	border-right: 1.5px solid var(--very_light_gray);
+	display: table-cell;
+	font-size: 24px;
+	padding: 6px 12px;
+	text-align: center;
+	width: auto;
+}
+.stat {
+	display: inline-block;
+	text-align: left;
+}
+.last {
+	border:none;
+}
+.label {
+	color: var(--dark_blue_gray);
+	display: block;
+	margin: 5px 0 0 0;
+	font-size: 9px;
+	text-transform: uppercase;
+	font-family: "montserrat"
+}
+.companyCallout {
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	margin: 5px 12px;
+	justify-content: space-between;
+}
+/* company single */
+thead {
+	padding: 4px 12px;
+}
+.stockContainer {
+	display: flex;
+	justify-items: start;
+	flex-wrap:wrap;
+	overflow-x: scroll;
+}
+.stock-info {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 13px;
+	width: 100%;
+	border-collapse: collapse;
+}
+.stock-info tr {
+	height: 32px;
+	border-bottom: 1px solid var(--light_medium_gray);
+}
+.stock-info tr td:nth-child(1) {
+	color: #232a31;
+}
+.stock-info tr td:nth-child(2) {
+	color: black;
+	font-weight: 600;
+	text-align: right;
+}
+.watch-list {
+	font-family: helvetica, sans-serif;
+	width: 100%;
+}
+.watch-list th {
+	border-bottom: 1px solid var(--light_medium_gray);
+	font-size: 11px;
+	text-align: right;
+	color: gray;
+	padding-bottom: 4px;
+}
+.watch-list th:first-child {
+	text-align: left;
+}
+.watch-list tbody tr {
+	border-bottom: 1px solid var(--light_medium_gray);
+	height: 43px;
+}
+.watch-list tbody tr:hover {
+	background-color: var(--very_light_gray);
+}
+.watch-list tbody tr td {
+	padding: 4px 12px;
+	vertical-align: top;
+}
+.watch-list tbody tr td:nth-child(1) a {
+	font-size: 14px;
+	color: var(--link_blue);
+	text-decoration: none;
+	font-weight: bold;
+}
+.watch-list tbody tr td:nth-child(1) p {
+	padding-top: 2px;
+	font-size: 11px;
+	color: var(--medium_gray);
+	position: absolute;
+}
+.watch-list tbody tr td:nth-child(2), .watch-list tbody tr td:nth-child(3), .watch-list tbody tr td:nth-child(4) {
+	font-weight: bold;
+	text-align: right;
+}
+.watch-list tbody tr .negative {
+	color: var(--breaking_red);
+}
+
+/* home hello */
