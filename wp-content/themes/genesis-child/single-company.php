@@ -108,7 +108,7 @@
             <div class="archiveContainer">   
                 <div class="row">
                     <h3 class="sectionLabel">Past Recommendations:</h3>
-                    <?php if ($recommendationsQuery->have_posts()): while($recommendationsQuery->have_posts()): $recommendationsQuery->the_post(); ?>
+                    <?php $i1 = 0; if ($recommendationsQuery->have_posts()): while($recommendationsQuery->have_posts()): $recommendationsQuery->the_post(); ?>
                         <?php if (tr_post_field('company_ticker') === $company): ?>
                             <article class="archiveCard">        
                                 <div class="card-image">
@@ -131,13 +131,15 @@
                                     <p class="article-promo"><?php echo get_the_excerpt(); ?></p>
                                 </div>
                             </article>
+                            <?php $i++ ?>
                         <?php endif; ?>
                     <?php 
                     // End the loop.
                     endwhile;
                     ?>
-                    <?php else : ?>
-                        <p class="noResults" style="margin-top: 48px ">Coming Soon</p>
+                        <?php if ($i1 == 0) : ?>
+                            <p class="noResults" style="margin-top: 12px ">Check Back Soon</p>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -156,7 +158,7 @@
             <div class="archiveContainer">   
                 <div class="row">
                     <h3 class="sectionLabel">In The News:</h3>
-                    <?php if ($newsQuery->have_posts()): while($newsQuery->have_posts()): $newsQuery->the_post(); ?>
+                    <?php $i2 = 0; if ($newsQuery->have_posts()): while($newsQuery->have_posts()): $newsQuery->the_post(); ?>
                         <?php if (tr_post_field('ticker_symbol') === $company): ?>
                             <article class="archiveCard">        
                                 <div class="card-image">
@@ -179,13 +181,16 @@
                                     <p class="article-promo"><?php echo get_the_excerpt(); ?></p>
                                 </div>
                             </article>
+                            <?php $i2++ ?>
                         <?php endif; ?>
                     <?php 
                     // End the loop.
                     endwhile;
                     ?>
-                    <?php else : ?>
-                        <p class="noResults" style="margin-top: 48px ">Coming Soon</p>
+                        <?php var_dump($i2); ?>
+                        <?php if($i2 == 0): ?>
+                            <p class="noResults" style="margin-top: 12px ">Check Back Soon</p>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <div class="d-flex justify-content-center">
                          <?php
