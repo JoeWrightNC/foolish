@@ -102,14 +102,20 @@
                 $args = array(
                     'post_type' => array('recommendation'),
                     'posts_per_page' => -1,
+                    'meta_query'    => array(
+                        array(
+                            'key'       => 'company_ticker',
+                            'value'     => $company,
+                            'compare'   => 'IN',
+                        )
+                    )
                 );
                 $recommendationsQuery = new WP_Query($args);
             ?> 
             <div class="archiveContainer">   
                 <div class="row">
                     <h3 class="sectionLabel">Past Recommendations:</h3>
-                    <?php $i1 = 0; if ($recommendationsQuery->have_posts()): while($recommendationsQuery->have_posts()): $recommendationsQuery->the_post(); ?>
-                        <?php if (tr_post_field('company_ticker') === $company): ?>
+                    <?php if ($recommendationsQuery->have_posts()): while($recommendationsQuery->have_posts()): $recommendationsQuery->the_post(); ?>
                             <article class="archiveCard">        
                                 <div class="card-image">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -131,15 +137,12 @@
                                     <p class="article-promo"><?php echo get_the_excerpt(); ?></p>
                                 </div>
                             </article>
-                            <?php $i++ ?>
-                        <?php endif; ?>
                     <?php 
                     // End the loop.
                     endwhile;
                     ?>
-                        <?php if ($i1 == 0) : ?>
-                            <p class="noResults" style="margin-top: 12px ">Check Back Soon</p>
-                        <?php endif; ?>
+                    <?php else: ?>
+                        <p class="noResults" style="margin-top: 12px ">Check Back Soon</p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -151,46 +154,48 @@
                     'posts_per_page' => 10,
                     'orderby' => 'date',
                     'order'   => 'DESC',
-                    'paged' => $paged
+                    'paged' => $paged,
+                    'meta_query'    => array(
+                        array(
+                            'key'       => 'ticker_symbol',
+                            'value'     => $company,
+                            'compare'   => 'IN',
+                        )
+                    )
                 );
                 $newsQuery = new WP_Query($args);
             ?> 
             <div class="archiveContainer">   
                 <div class="row">
                     <h3 class="sectionLabel">In The News:</h3>
-                    <?php $i2 = 0; if ($newsQuery->have_posts()): while($newsQuery->have_posts()): $newsQuery->the_post(); ?>
-                        <?php if (tr_post_field('ticker_symbol') === $company): ?>
-                            <article class="archiveCard">        
-                                <div class="card-image">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <div class="archiveCardImageHolder">
-                                            <figure class="archiveCardImage"> <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a> </figure>
-                                        </div>
-                                    <?php else: ?>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <figure class="archiveCardImage"> <a href="<?php the_permalink(); ?>"><img src="https://optimize.foolcdn.com/?url=https%3A%2F%2Fg.foolcdn.com%2Fmisc-assets/jester.png&w=400&op=resize"></a> </figure>
-                                        </a>
-                                    <?php endif; ?>
-
-                                </div>
-                                <div class="text">
+                    <?php if ($newsQuery->have_posts()): while($newsQuery->have_posts()): $newsQuery->the_post(); ?>
+                        <article class="archiveCard">        
+                            <div class="card-image">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <div class="archiveCardImageHolder">
+                                        <figure class="archiveCardImage"> <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a> </figure>
+                                    </div>
+                                <?php else: ?>
                                     <a href="<?php the_permalink(); ?>">
-                                        <h4 data-uw-rm-heading="level" role="heading" aria-level="3"><?php echo get_the_title(); ?></h4>
+                                        <figure class="archiveCardImage"> <a href="<?php the_permalink(); ?>"><img src="https://optimize.foolcdn.com/?url=https%3A%2F%2Fg.foolcdn.com%2Fmisc-assets/jester.png&w=400&op=resize"></a> </figure>
                                     </a>
-                                    <div class="story-date-author"><?php the_author_posts_link(); ?> | <?php echo get_the_date( 'F j, Y' ); ?></div>
-                                    <p class="article-promo"><?php echo get_the_excerpt(); ?></p>
-                                </div>
-                            </article>
-                            <?php $i2++ ?>
-                        <?php endif; ?>
+                                <?php endif; ?>
+
+                            </div>
+                            <div class="text">
+                                <a href="<?php the_permalink(); ?>">
+                                    <h4 data-uw-rm-heading="level" role="heading" aria-level="3"><?php echo get_the_title(); ?></h4>
+                                </a>
+                                <div class="story-date-author"><?php the_author_posts_link(); ?> | <?php echo get_the_date( 'F j, Y' ); ?></div>
+                                <p class="article-promo"><?php echo get_the_excerpt(); ?></p>
+                            </div>
+                        </article>
                     <?php 
                     // End the loop.
                     endwhile;
                     ?>
-                        <?php var_dump($i2); ?>
-                        <?php if($i2 == 0): ?>
-                            <p class="noResults" style="margin-top: 12px ">Check Back Soon</p>
-                        <?php endif; ?>
+                    <?php else: ?>
+                        <p class="noResults" style="margin-top: 12px ">Check Back Soon</p>
                     <?php endif; ?>
                     <div class="d-flex justify-content-center">
                          <?php
