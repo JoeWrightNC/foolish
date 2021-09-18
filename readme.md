@@ -14,5 +14,6 @@
     - Username: motleyfool
     - Password: StayFoolish!
 10. Enable the Typerocket and the Motley Fool plugin in the Admin:  [http://localhost/wp-admin](http://localhost/wp-admin)
-11. Navigate to [http://localhost/](http://localhost/).
-12. There's a brief intro on the homepage that will introduce everything from there!
+11. Flush permalinks by clicking save settings on the permalink settings page  [http://localhost/wp-admin/options-permalink.php](http://localhost/wp-admin/options-permalink.php)
+12. Navigate to [http://localhost/](http://localhost/).
+13. There's a brief intro on the homepage that will introduce everything from there!
